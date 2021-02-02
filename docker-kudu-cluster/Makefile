@@ -1,11 +1,11 @@
 kudu-install:
-	.\kudu-install.sh
+	sh kudu-install.sh
 
 run:
-	.\start_kudu.sh
+	sh start_kudu.sh
 
 stop:
-	.\stop_kudu.sh
+	sh stop_kudu.sh
 
 clean:
-	.\kudu_clean.sh
+	sh kudu_clean.sh
