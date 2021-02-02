@@ -10,9 +10,9 @@ services:
     image: "trino-worker01:351"
     ports:
       - "8081:8081"
-    comtainer_name: "worker01"
+    container_name: "worker01"
   worker02:
     image: "trino-worker02:351"
-      ports:
-        - "8082:8082"
-      comtainer_name: "worker02"
+    ports:
+      - "8082:8082"
+    container_name: "worker02"
