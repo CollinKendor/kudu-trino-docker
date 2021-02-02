@@ -1,9 +1,8 @@
-version: '1'
+version: '3'
 
 services:
   coordinator:
     image: "trino:351"
     ports:
       - "8080:8080"
-    container_name: "trino"
-    command: http://coordinator:8080 trino
+    container_name: "coordinator"
