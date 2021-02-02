@@ -2,7 +2,17 @@ version: '3'
 
 services:
   coordinator:
-    image: "trino:351"
+    image: "trino-coordinator:351"
     ports:
       - "8080:8080"
     container_name: "coordinator"
+  worker01:
+    image: "trino-worker01:351"
+    ports:
+      - "8081:8081"
+    comtainer_name: "worker01"
+  worker02:
+    image: "trino-worker02:351"
+      ports:
+        - "8082:8082"
+      comtainer_name: "worker02"

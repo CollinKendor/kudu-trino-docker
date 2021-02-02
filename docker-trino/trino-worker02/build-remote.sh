@@ -25,7 +25,7 @@ cp -R default -t ${WORK_DIR}
 curl -o ${WORK_DIR}/trino-cli-${TRINO_VERSION}-executable.jar ${CLIENT_LOCATION}
 chmod +x ${WORK_DIR}/trino-cli-${TRINO_VERSION}-executable.jar
 
-CONTAINER="trino:${TRINO_VERSION}"
+CONTAINER="trino-worker02:${TRINO_VERSION}"
 
 docker build ${WORK_DIR} --pull -f Dockerfile -t ${CONTAINER} --build-arg "TRINO_VERSION=${TRINO_VERSION}"
 

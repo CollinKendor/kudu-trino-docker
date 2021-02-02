@@ -1,11 +1,15 @@
+TRINO_VEERSION = 351
+
 trino-install:
-	./trino-base/build-remote.sh 351
+	./trino-coordinator/build-remote.sh TRINO_VERSION
+	./trino-worker01/build-remote.sh TRINO_VERSION
+	./trino-worker02/build-remote.sh TRINO_VERSION
 
 run-with-log:
-	docker run -p 8080:8080 trino:351
+	docker-compose up
 
 run:
-	docker run -d -p 8080:8080 trino:351
+	docker-compose up -d
 
 stop:
-	docker stop trino
+	docker-compose down
