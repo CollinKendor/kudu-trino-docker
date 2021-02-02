@@ -29,7 +29,7 @@ COPY trino-cli-${TRINO_VERSION}-executable.jar /usr/bin/trino
 COPY --chown=trino:trino trino-server-${TRINO_VERSION} /usr/lib/trino
 COPY --chown=trino:trino default/etc /etc/trino
 
-EXPOSE 8080
+EXPOSE 8082
 USER trino:trino
 ENV LANG en_US.UTF-8
 CMD ["/usr/lib/trino/bin/run-trino"]
