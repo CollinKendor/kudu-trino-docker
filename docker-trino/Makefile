@@ -1,6 +1,9 @@
 trino-install:
-	git clone https://github.com/trinodb/trino
-	cp etc trino/core/docker/default/
+	cd trino-base
+	./build-remote.sh
+
+run-with-log:
+	docker run -p 8080:8080 --name trino trino:352-SNAPSHOT
 
 run:
-	docker run -p 8080:8080 --name trino trinodb/trino -d
+	docker run -d -p 8080:8080 --name trino trino:352-SNAPSHOT
