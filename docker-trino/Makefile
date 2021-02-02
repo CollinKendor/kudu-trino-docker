@@ -1,9 +1,11 @@
 trino-install:
-	cd trino-base
-	./build-remote.sh
+	./trino-base/build-remote.sh 351
 
 run-with-log:
-	docker run -p 8080:8080 --name trino trino:352-SNAPSHOT
+	docker run -p 8080:8080 trino:351
 
 run:
-	docker run -d -p 8080:8080 --name trino trino:352-SNAPSHOT
+	docker run -d -p 8080:8080 trino:351
+
+stop:
+	docker stop trino
