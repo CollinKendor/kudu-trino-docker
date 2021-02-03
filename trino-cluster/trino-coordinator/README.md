@@ -2,43 +2,25 @@
 
 ## About the Container
 This Docker image is designed to provide the following
-* An out-of-the-box single node cluster with the JMX, memory, TPC-DS, and TPC-H
- catalogs
+* An out-of-the-box 3 node cluster with the JMX, memory, TPC-DS, TPC-H and Kudu
+  catalogs
 * An image that can be deployed as a full cluster by mounting in configuration
 * An image to be used as the basis for the Kubernetes Trino operator
 
 ## Quickstart
-
-### Run the Trino server
-
-You can launch a single node Trino cluster for testing purposes.
-The Trino node will function both as a coordinator and a worker.
-To launch it, execute the following:
-
-```bash
-docker run -p 8080:8080 --name trino trinodb/trino
-```
-
-Wait for the following message log line:
-```
-INFO	main	io.trino.server.Server	======== SERVER STARTED ========
-```
-
-The Trino server is now running on `localhost:8080` (the default port).
-
 ### Run the Trino CLI
 
 Run the [Trino CLI](https://trino.io/docs/current/installation/cli.html),
 which connects to `localhost:8080` by default:
 
 ```bash
-docker exec -it trino trino
+docker exec -it coordinator trino
 ```
 
 You can pass additional arguments to the Trino CLI:
 
 ```bash
-docker exec -it trino trino --catalog tpch --schema sf1
+docker exec -it coordinator trino --catalog kudu --schema default
 ```
 
 ## Configuration
@@ -64,16 +46,14 @@ is desired for the data directory it should be mounted to `/data/trino`.
 
 ## Building a custom Docker image
 
-To build an image for a locally modified version of Trino, run the Maven
-build as normal for the `trino-server` and `trino-cli` modules, then
-build the image:
+To build an image:
 
 ```bash
 ./build-remote.sh
 ```
 
 The Docker build process will print the ID of the image, which will also
-be tagged with `trino:xxx-SNAPSHOT`, where `xxx-SNAPSHOT` is the version
+be tagged with `trino-coordinator:xxx`, where `xxx` is the version
 number of the Trino Maven build.
 
 ## Getting Help
