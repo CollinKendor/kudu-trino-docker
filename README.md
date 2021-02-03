@@ -83,7 +83,7 @@ make clear
 To upgrade Trino version: 
 1. Update the version number of `TRINO_VERSION` in the `Makefile`
 2. In `docker-compose.yml`, update the version number in the `image` tag. (i.e. replace `xxx` with the new version number):
-   ```dockerfile
+   ```yml
    version: '3'
 
     services:
