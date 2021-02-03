@@ -50,7 +50,6 @@ cd trino-cluster
 ```bash
 make trino-install
 ```
-To upgrade Trino version, update the version number of `TRINO_VERSION` in the `Makefile` and run `make trino-install again`.
 #### Start Cluster
 Start Trino cluster and create Container:
 ```bash
@@ -80,3 +79,28 @@ To stop Trino cluster and remove container:
 ```bash
 make clear
 ```
+#### Upgrade Trino
+To upgrade Trino version: 
+1. Update the version number of `TRINO_VERSION` in the `Makefile`
+2. In `docker-compose.yml`, update the version number in the `image` tag. (i.e. replace `xxx` with the new version number):
+   ```dockerfile
+   version: '3'
+
+    services:
+      coordinator:
+        image: "trino-coordinator:xxx"
+        ports:
+          - "8080:8080"
+        container_name: "coordinator"
+      worker01:
+        image: "trino-worker01:xxx"
+        ports:
+          - "8081:8081"
+        container_name: "worker01"
+      worker02:
+        image: "trino-worker02:xxx"
+        ports:
+          - "8082:8082"
+        container_name: "worker02"
+   ```
+3. run `make trino-install` again.
