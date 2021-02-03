@@ -41,6 +41,7 @@ To clear Kudu docker images entirely:
 make clear
 ```
 ### Trino
+To upgrade the Trino version, update the version number in `TRINO_VERSION`. This varibale is located in the `Makefile`.
 #### Install Service
 1. Enter the `trino-cluster` directory:
 ```bash
